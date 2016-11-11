@@ -1,0 +1,37 @@
+{
+  "name": "sprite_mate",
+  "version": "1.0.0",
+  "description": "A web application where users can choose one or more 2D sprites and a background for the sprites to play around in.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SpriteMate/SpriteMate.git"
+  },
+  "keywords": [
+    "2D",
+    "sprite"
+  ],
+  "author": "Matt Johnson, Josh Vaughn, Jeremy McKella, Dorie Coil",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SpriteMate/SpriteMate/issues"
+  },
+  "homepage": "https://github.com/SpriteMate/SpriteMate#readme",
+  "dependencies": {
+    "bcryptjs": "^2.3.0",
+    "body-parser": "^1.15.2",
+    "chai": "^3.5.0",
+    "express": "^4.14.0",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.14.2",
+    "method-override": "^2.3.6",
+    "mocha": "^3.1.2",
+    "mysql": "^2.12.0",
+    "passport": "^0.3.2",
+    "sequelize": "^3.25.0",
+    "sequelize-cli": "^2.4.0"
+  }
+}
