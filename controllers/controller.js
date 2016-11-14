@@ -15,7 +15,12 @@ router.get('/sandbox', function (req, res) {
 });
 
 router.get('/gallery', function (req, res) {
-		res.render('gallery');
+		var data =  models.Sprites.findAll().then(function(data){
+			var hbsObject = { Sprites: data };
+			console.log(hbsObject);
+			res.render('gallery', hbsObject);
+
+	});
 });
 
 router.get('/users', function (req, res) {
