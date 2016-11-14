@@ -4,6 +4,10 @@
 // Initialize Express app
 var express = require('express');
 var app = express();
+
+var PORT = process.env.PORT || 9001;
+
+
 var path = require('path');
 var bodyParser = require('body-parser');
 var session = require('express-session'); 
@@ -12,7 +16,15 @@ var models  = require('./models');
 var sequelizeConnection = models.sequelize;
 var makeHash = require('./crypto.js'); 
 
+// Sets up the Express app to handle data parsing
 
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.text());
+app.use(bodyParser.json({type:'application/vnd.api+json'}));
+
+// static directory
+app.use(express.static('app/public'));
 
 // PREPARE OUR TABLES 
 // ===============================
@@ -108,6 +120,6 @@ app.post('/login/true?' , (req, res) => {
 }); 
 
 // listen on port 3000
-app.listen(9001, function(){
-	console.log("Listening on port 9001")
+app.listen(PORT, function(){
+	console.log("Listening on PORT " + PORT )
 })
