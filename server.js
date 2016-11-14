@@ -45,7 +45,7 @@ app.get('/', (req, res) =>  {
 //serves the signup page 
 app.get('/about', (req, res) =>  {
 
-    res.status(200).sendFile(path.join(__dirname + '/public/html/signup.html'));
+    res.status(200).sendFile(path.join(__dirname + '/public/html/about.html'));
 });
 
 //serves the signup page 
@@ -54,9 +54,9 @@ app.get('/signup', (req, res) =>  {
     res.status(200).sendFile(path.join(__dirname + '/public/html/signup.html'));
 });
 
+
 //standard route for posting profile data to the server ;adds new profiles 
-app.post('/signup/new/' , (req, res) =>{
-    
+app.post('/signup/new/' , (req, res) =>{    
 	let newProfile = req.body;
 
 	//sets the username and password for storage 
@@ -79,12 +79,33 @@ app.post('/signup/new/' , (req, res) =>{
 		res.send('error in creating account'); 
 	}
 	//redirect user to login 
-	res.redirect('/login'); 
+	res.redirect('/login/true?'); 
     
     
 }); 
 
+app.post('/login/true?' , (req, res) => {
+	//set the username and password 
+	const username = req.body.Id; 
+	const password = req.body.password;
+    //creates a hash based on the secret key
+	const hash = makeHash(password);
+    
+	const user = profiles.filter(p=>p.Id === username); 
+    
+	//lookup in database for the username and password goes here 
+    
+        var hashFromDatabase = // returned response from the databse 
+	  	if(hash === hashFromDatabase && user){
+	  	 	console.log(username , 'authenticated'); 
+	  	 	res.redirect('/username/login=true'); 
+	  	} else{
+	  	 	res.redirect('/'); 
+	  	}
 
+	 
+
+}); 
 
 // listen on port 3000
 app.listen(9001, function(){
