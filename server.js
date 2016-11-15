@@ -24,25 +24,41 @@ app.use(bodyParser.text());
 app.use(bodyParser.json({type:'application/vnd.api+json'}));
 
 // static directory
-app.use(express.static('app/public'));
+app.use(express.static('public'));
+
+//Method Override
+app.use(methodOverride('_method'));
+
+
 
 // PREPARE OUR TABLES 
 // ===============================
 
 
 // We run this query so that we can drop our tables even though they have foreign keys
-sequelizeConnection.query('SET FOREIGN_KEY_CHECKS = 0')
+// sequelizeConnection.query('SET FOREIGN_KEY_CHECKS = 0')
 
-// note: force:true drops the table if it already exists
-.then(function(){
-	return sequelizeConnection.sync({force:true})
-})
+// // note: force:true drops the table if it already exists
+// .then(function(){
+// 	// return sequelizeConnection.sync({force:true})
+// })
 
 
 
 
 // ROUTES
 // ======================
+//Static Routes
+// require("./routes/api-routes.js")(app);
+// require("./routes/html-routes.js")(app);
+
+//Handlebars
+//========
+var exphbs = require('express-handlebars');
+app.engine('handlebars', exphbs({
+	defaultLayout: 'main'
+}));
+app.set('view engine', 'handlebars');
 
 //for serving front-end static content 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -119,7 +135,13 @@ app.post('/login/true?' , (req, res) => {
 
 }); 
 
-// listen on port 3000
+var routes = require('./controllers/controller.js');
+app.use('/', routes);
+
+
+
+
+// listen on port 9001
 app.listen(PORT, function(){
 	console.log("Listening on PORT " + PORT )
 })
