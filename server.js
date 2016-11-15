@@ -105,9 +105,12 @@ app.post('/login/true?' , (req, res) => {
     
 	const user = profiles.filter(p=>p.Id === username); 
     
-	//lookup in database for the username and password goes here 
-    
-        var hashFromDatabase = // returned response from the databse 
+	//lookup in database for the username and password goes here
+	Users.findOne({where:{username:username}}).then(function(user){
+
+		// returned response from the databse 
+		 var hashFromDatabase = user.password;
+		    
 	  	if(hash === hashFromDatabase && user){
 	  	 	console.log(username , 'authenticated'); 
 	  	 	res.redirect('/username/login=true'); 
@@ -115,7 +118,9 @@ app.post('/login/true?' , (req, res) => {
 	  	 	res.redirect('/'); 
 	  	}
 
-	 
+	}) 
+    
+  
 
 }); 
 
