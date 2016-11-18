@@ -64,12 +64,6 @@ app.set('view engine', 'handlebars');
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-//home route , serves the index.html file 
-app.get('/', (req, res) =>  {
-
-    res.status(200).sendFile(path.join(__dirname + '/index.html')); 
-});
-
 //serves the signup page 
 app.get('/about', (req, res) =>  {
 
@@ -123,7 +117,7 @@ app.post('/login/true?' , (req, res) => {
     
 	//lookup in database for the username and password goes here 
     
-        var hashFromDatabase = // returned response from the databse 
+        var hashFromDatabase; // returned response from the databse 
 	  	if(hash === hashFromDatabase && user){
 	  	 	console.log(username , 'authenticated'); 
 	  	 	res.redirect('/username/login=true'); 
