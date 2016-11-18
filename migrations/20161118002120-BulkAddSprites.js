@@ -10,7 +10,7 @@ module.exports = {
         ImagePreview: "https://www.dropbox.com/s/9099ww49b5qagjc/megaman_jump.jpg?dl=0",
         SpriteSheet: "https://www.dropbox.com/s/6421uv0ct5wrise/megaman_running.jpg?dl=0",
         ImageName: "Megaman",
-        Description: "A Megaman spritesheet with 8 poses."
+        Description: "A Megaman spritesheet with 8 poses.",
         Rating: 10.0, 
         UserSubmitted: false, 
         Private: false, 

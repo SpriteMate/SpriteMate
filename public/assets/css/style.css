@@ -5,3 +5,13 @@ body{
     font-family: 'Roboto Condensed', sans-serif;
 }
 
+
+.thumbnail {
+	height: 350px;
+	width: 200px;
+}
+
+.thumbnail img {
+	height: 150px;
+	width: 150px;
+}
