@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P'); 
+
+.container{
+    width:100%; 
+    background-image: url('http://i.stack.imgur.com/WHu9Z.png');
+    background-size:contain;
+    background-repeat: repeat-x; 
+    background-attachment: scroll;  
+}
+        
+#player{
+    position:relative; 
+    top:70px;
+}
+
+.score{
+    position: relative; 
+    bottom:150px; 
+    left:75%; 
+    font-family: 'Press Start 2P', sans-serif;
+    color:black;
+    width:100px; 
+    height:50px; 
+    
+}
+        
+.flipped{
+    -moz-transform: scale(-1, 1) translate(250px,0px) ;
+    -webkit-transform: scale(-1, 1) translate(250px,0px);
+    -o-transform: scale(-1, 1) translate(250px,0px);
+    transform: scale(-1, 1) translate(250px,0px);
+    filter: FlipH;         
+}
+
+@-webkit-keyframes jump {
+    0% {-webkit-transform: translate(0px, -5px )}
+    10% {-webkit-transform: translate(0px, -10px )}
+    25% {-webkit-transform: translate(0px, -25px )}
+    40% {-webkit-transform: translate(0px,-40px )}
+    50% {-webkit-transform: translate(0px, -50px )}
+    60%{-webkit-transform: translate(0px, -40px)}
+    75% {-webkit-transform: translate(0px, -25px )}
+    90%{-webkit-transform: translate(0px ,-10px)}
+    100%{-webkit-transform: translate(0px , -5px)}
+    
+  
+}
+
+.jumping{
+    -webkit-animation-name: jump; 
+    -webkit-animation-duration:.5s;
+    -webkit-animation-timing-function: linear;
+    animation-name: jump;
+    animation-duration:.5s;
+    animation-timing-function: linear;
+}
+
+
+
+#coin{
+    position:relative;
+    bottom:18px; 
+    left:150px; 
+    height:25px; 
+    width:25px;
+}
+
+#brick{
+     
+    position:relative;
+    bottom:110px; 
+    left:50px; 
+    height:25px; 
+    width:25px;
+    transform:translate(-250px , 0px); 
+}
