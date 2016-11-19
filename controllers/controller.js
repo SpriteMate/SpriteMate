@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var models = require('../models');
+var makeHash = require('../crypto.js'); 
 
 router.get('/', function (req, res) {
 	res.redirect('/home');
@@ -46,9 +47,13 @@ router.get('/login' , function(req, res){
 router.get('/login=false' , function(req, res){
     res.render('loginfalse'); 
 })
+
+
 //creates the new account on the server and adds it to the database  
 router.post('/signup/new/' , (req, res) =>{    
 	var newProfile = req.body;
+
+	console.log(newProfile); 
     
 	//sets the username and password for storage 
 	const username = newProfile.Id; 
@@ -58,20 +63,9 @@ router.post('/signup/new/' , (req, res) =>{
     //sets userpassword = hash 
     newProfile.password = hash; 
     
-    models.Users.findOne({where:{UserName:username}}).then(function(user){
-        if(typeof user === 'undefined'){
-            models.Users.create(newProfile);
-            return user; 
-        }else{
-            //redirects the user to the signup page because the account exists
-            res.redirect('signup'); 
-        }
-    }).then(function(user){
-        console.log(user);
-        
-        //takes the user to the login page where they can authenticate 
-        res.redirect('login'); 
-    })
+
+    models.Users.create(newProfile); 
+
          
 }); 
 
@@ -82,6 +76,8 @@ router.post('/login=true?' , (req, res) => {
 	const password = req.body.password;
     //creates a hash based on the secret key
 	const hash = makeHash(password);
+
+	console.log(hash); 
     
     //lookup in the database to authenticate the user 
     Users.findOne({where:{UserName:username}}).then(function(user){
