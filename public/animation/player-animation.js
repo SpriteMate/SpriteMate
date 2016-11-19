@@ -1,4 +1,4 @@
-
+$(document).ready(function () {
 var intervals = []
 var pos = 0; 
 var playerDirection; 
@@ -13,7 +13,7 @@ var score = 0 ;
 var player = {
     
     name: 'lopez',  
-    
+
   animateSprite :function(direction){
       console.log('position:',pos); 
       var player = document.getElementById('player');
@@ -45,7 +45,7 @@ var player = {
                    coin = false;
                    console.log('coin picked up *')
                    coinSound.play(); 
-                   var container = document.querySelector('.container'); 
+                   var container = document.querySelector('.sandbox'); 
                    var elm =  document.getElementById('coin'); 
                    container.removeChild(elm);
                    score++;
@@ -111,7 +111,7 @@ var player = {
             
                 if(pos >=90 && pos < 144 && jumping){
                        setTimeout(function(){
-                            var container = document.querySelector('.container');
+                            var container = document.querySelector('.sandbox');
                             var brick = document.getElementById('brick'); 
                             container.removeChild(brick); 
                             brick = false; 
@@ -161,7 +161,7 @@ document.addEventListener("keypress" , function(event){
            }
        }
        
-       if(keycode == '32'){
+       if(keycode == '119'){
            player.action.jump();
            setTimeout(function(){apex=true} , 300); 
        }
@@ -201,9 +201,14 @@ function init(){
     scoreUpdate(score); 
 }
 
-
 //main call 
-$(document).ready(init()); 
+init(); 
+
+});//end doc . ready
+
+
+
+
 
 
 
